@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="description" content="トイレに行けたらガチャが回せる、3歳からのトイレトレーニング応援アプリ。出なくてもOK。集めた車は図鑑に残ります。登録不要・無料・広告なし。">
+<link rel="canonical" href="https://tagc.works/toilet-gacha/">
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#E6F0FB">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="トイレガチャ">
+<meta property="og:type" content="website">
+<meta property="og:title" content="トイレいったら ガチャ｜3歳からのトイトレ応援アプリ（無料）">
+<meta property="og:description" content="トイレに行けたらガチャが回せる。出なくてもOK。車を集めながら楽しくトイトレ。">
+<meta property="og:image" content="https://tagc.works/toilet-gacha/icons/icon-512.png">
+<meta property="og:url" content="https://tagc.works/toilet-gacha/">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "トイレいったら ガチャ", "url": "https://tagc.works/toilet-gacha/", "applicationCategory": "GameApplication", "operatingSystem": "Web", "inLanguage": "ja", "audience": {"@type": "PeopleAudience", "suggestedMinAge": 2, "suggestedMaxAge": 5}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "description": "トイレに行けたらガチャが回せる、3歳からのトイレトレーニング応援アプリ。"}</script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YF2F6KJ848"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
+gtag('js',new Date());gtag('config','G-YF2F6KJ848');</script>
+<title>たのしく トイトレ！ トイレいったら ガチャ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#E6F0FB;--ink:#23364B;--main:#2E9BD6;--sun:#FFD23F;--grass:#3DBE7A;--pink:#FF6FA5;
+  --skin:#FFB5A3;--gold:#FFC24B}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+html,body{touch-action:manipulation;overscroll-behavior:none;-webkit-touch-callout:none;
+  -webkit-user-select:none;user-select:none}
+body{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",sans-serif;color:var(--ink);
+  background:var(--paper);min-height:100vh;
+  background-image:radial-gradient(circle at 15% 8%,#FFFFFF99 0 13px,transparent 14px),
+                   radial-gradient(circle at 84% 30%,#FFFFFF77 0 9px,transparent 10px),
+                   radial-gradient(circle at 40% 70%,#FFFFFF66 0 16px,transparent 17px);
+  background-size:230px 230px}
+.wrap{max-width:420px;margin:0 auto;padding:16px 16px 30px}
+.screen{display:none}.screen.on{display:block;animation:in .28s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+button{font-family:inherit;color:var(--ink);cursor:pointer;touch-action:manipulation}
+
+/* ===== おしりん ===== */
+.mascot{width:84px;height:84px;flex:none;animation:wiggle 2.6s ease-in-out infinite;will-change:transform}
+.mascot svg{width:100%;height:100%;overflow:visible;display:block}
+.mascot .body{fill:var(--skin);stroke:var(--ink);stroke-width:5;stroke-linejoin:round}
+.mascot .limb{stroke:var(--ink);stroke-width:5;stroke-linecap:round;fill:none}
+.mascot .hand{fill:var(--skin);stroke:var(--ink);stroke-width:5}
+.mascot .crease{stroke:var(--ink);stroke-width:4.5;fill:none;stroke-linecap:round}
+.mascot .eye{fill:var(--ink)}.mascot .blush{fill:var(--pink);opacity:.4}
+.mascot .happy-eye,.mascot .mouth-big{opacity:0}
+.mascot .arm{transform-box:view-box}
+.mascot .arm-l{transform-origin:30px 66px}.mascot .arm-r{transform-origin:90px 66px}
+@keyframes wiggle{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(2.5deg) translateY(-4px)}}
+.mascot.cheer{animation:jump .55s cubic-bezier(.25,1.6,.4,1) 3}
+@keyframes jump{0%{transform:translateY(0) scale(1)}28%{transform:translateY(-24px) scale(1.1,.9) rotate(-7deg)}
+  58%{transform:translateY(0) scale(.92,1.08) rotate(4deg)}100%{transform:translateY(0) scale(1)}}
+.mascot.cheer .mouth-normal{opacity:0}.mascot.cheer .mouth-big{opacity:1}
+.mascot.cheer .eye{opacity:0}.mascot.cheer .happy-eye{opacity:1}
+.mascot.cheer .arm-l{animation:armL .28s ease-out 6 alternate}
+.mascot.cheer .arm-r{animation:armR .28s ease-out 6 alternate}
+@keyframes armL{to{transform:rotate(-42deg)}}@keyframes armR{to{transform:rotate(42deg)}}
+.talkrow{display:flex;align-items:center;gap:10px;margin:10px 0 14px}
+.bubble{flex:1;position:relative;background:#fff;border:3.5px solid var(--ink);border-radius:20px;
+  padding:12px 14px;box-shadow:0 5px 0 var(--ink);font-size:16px;font-weight:900;line-height:1.4;
+  min-height:60px;display:flex;align-items:center}
+.bubble::before{content:"";position:absolute;left:-9px;top:50%;margin-top:-7px;width:14px;height:14px;
+  background:#fff;border-left:3.5px solid var(--ink);border-bottom:3.5px solid var(--ink);
+  transform:rotate(45deg);border-radius:0 0 3px 0}
+.bubble.pop{animation:bpop .38s cubic-bezier(.2,1.7,.4,1)}
+@keyframes bpop{0%{transform:scale(.72);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1)}}
+
+/* ===== home ===== */
+.hero{text-align:center;margin-bottom:6px}
+.titlecard{display:inline-block;background:#fff;border:4px solid var(--ink);border-radius:24px;
+  padding:12px 20px;box-shadow:0 7px 0 var(--ink),0 0 0 7px #fff,0 0 0 10px var(--ink);transform:rotate(-2deg)}
+.titlecard .eyebrow{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:9.5px;letter-spacing:.22em;
+  color:var(--main);margin-bottom:3px}
+.titlecard h1{font-size:26px;font-weight:900;line-height:1.2}
+.titlecard h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--sun) 62%)}
+.titlecard .tag{margin-top:7px;font-size:12px;font-weight:900;background:var(--main);color:#fff;
+  border:2.5px solid var(--ink);border-radius:999px;padding:3px 12px;display:inline-block}
+
+.bigbtns{display:grid;gap:12px;margin-top:6px}
+.did{display:flex;align-items:center;gap:14px;background:var(--main);color:#fff;border:4px solid var(--ink);
+  border-radius:26px;padding:20px 18px;box-shadow:0 9px 0 var(--ink);animation:tap 3s ease-in-out infinite}
+.did:active{transform:translateY(9px);box-shadow:none;animation:none}
+.did .em{font-size:44px;line-height:1}
+.did b{font-size:30px;font-weight:900;display:block;line-height:1.2}
+.did i{font-style:normal;font-size:12px;font-weight:700;opacity:.9;display:block}
+.deta{margin-top:12px;background:#FFFFFFAA;border:3px dashed #23364B55;border-radius:20px;padding:10px 11px 12px}
+.detalabel{font-size:11.5px;font-weight:900;opacity:.7;text-align:center;margin-bottom:8px}
+.detarow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chooseTitle{font-size:22px;font-weight:900;text-align:center;margin:2px 0 14px}
+.chooseGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.pick{background:#fff;border:3.5px solid var(--ink);border-radius:20px;padding:8px 4px 10px;
+  box-shadow:0 6px 0 var(--ink);text-align:center}
+.pick:active{transform:translateY(6px);box-shadow:none}
+.pick svg{width:100%;display:block}
+.pick .lb{font-size:13.5px;font-weight:900;margin-top:4px;line-height:1.25}
+.pick .em{font-size:22px;display:block;line-height:1.3}
+.det{background:#fff;border:3.5px solid var(--ink);border-radius:20px;padding:12px 6px;
+  box-shadow:0 6px 0 var(--ink);font-size:16px;font-weight:900;line-height:1.25}
+.det:active{transform:translateY(6px);box-shadow:none}
+.det .em{font-size:30px;display:block;line-height:1.2}
+.det.poop{background:#F4E4CE}
+@keyframes tap{0%,90%,100%{transform:none;box-shadow:0 9px 0 var(--ink)}
+  94%{transform:translateY(5px);box-shadow:0 4px 0 var(--ink)}}
+.subrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.sub{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:13px 8px;
+  box-shadow:0 5px 0 var(--ink);font-size:15px;font-weight:900;text-align:center}
+.sub:active{transform:translateY(5px);box-shadow:none}
+.sub .n{font-family:"Baloo 2",sans-serif;font-size:22px;display:block}
+.streak{margin-top:12px;background:#fff;border:3px solid var(--ink);border-radius:18px;padding:11px 14px;
+  box-shadow:0 4px 0 var(--ink);display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:900}
+.streak b{font-family:"Baloo 2",sans-serif;font-size:20px}
+.parent{margin-top:14px;text-align:center;font-size:10.5px;line-height:1.7;opacity:.7;font-weight:500}
+.parent a{color:var(--ink);font-weight:700}
+
+/* ===== gacha ===== */
+.gachawrap{text-align:center;padding-top:6px}
+.machine{width:100%;max-width:300px;margin:0 auto;display:block}
+.knob{transform-box:fill-box;transform-origin:center;cursor:pointer}
+.knob.spin{animation:spin 1.1s cubic-bezier(.3,0,.2,1)}
+@keyframes spin{to{transform:rotate(1080deg)}}
+.machine.shake{animation:mshake .5s ease-in-out}
+@keyframes mshake{0%,100%{transform:none}20%{transform:rotate(-2deg)}60%{transform:rotate(2deg)}}
+.capsule{width:120px;height:120px;margin:8px auto 0;display:block;cursor:pointer}
+.capsule.drop{animation:drop .7s cubic-bezier(.4,1.6,.5,1)}
+@keyframes drop{0%{transform:translateY(-120px) scale(.5);opacity:0}
+  60%{transform:translateY(10px) scale(1.05);opacity:1}100%{transform:translateY(0) scale(1)}}
+.capsule.wiggle{animation:cw .6s ease-in-out infinite}
+@keyframes cw{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.gachamsg{font-size:19px;font-weight:900;margin-top:12px;min-height:28px}
+.carcard{background:#fff;border:5px solid var(--ink);border-radius:28px;box-shadow:0 9px 0 var(--ink);
+  padding:16px;margin-top:10px;animation:bpop .5s cubic-bezier(.2,1.7,.4,1)}
+.carcard.rare{border-color:var(--main);box-shadow:0 9px 0 var(--main),0 0 0 6px #fff,0 0 0 10px var(--main)}
+.carcard.sr{border-color:var(--gold);box-shadow:0 9px 0 var(--gold),0 0 0 6px #fff,0 0 0 10px var(--gold);
+  background:linear-gradient(160deg,#FFFDF3,#FFF3D0)}
+.carcard svg{width:100%;max-width:250px;display:block;margin:0 auto}
+.carname{font-size:23px;font-weight:900;margin-top:8px}
+.rarity{display:inline-block;font-size:11px;font-weight:900;border:2.5px solid var(--ink);border-radius:999px;
+  padding:3px 12px;margin-top:6px;background:#fff}
+.rarity.r{background:var(--main);color:#fff}
+.rarity.s{background:var(--gold)}
+.dup{font-size:12.5px;font-weight:700;opacity:.7;margin-top:6px}
+.cta{width:100%;font-size:22px;font-weight:900;background:var(--main);color:#fff;border:4px solid var(--ink);
+  border-radius:24px;padding:16px;box-shadow:0 8px 0 var(--ink);margin-top:16px}
+.cta:active{transform:translateY(8px);box-shadow:none}
+.cta.ghost{background:#fff;color:var(--ink);font-size:16px;padding:13px;box-shadow:0 5px 0 var(--ink);margin-top:10px}
+
+/* ===== ずかん ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.chipbtn{font-size:14px;font-weight:900;background:#fff;border:3px solid var(--ink);border-radius:999px;
+  padding:8px 15px;box-shadow:0 4px 0 var(--ink)}
+.chipbtn:active{transform:translateY(4px);box-shadow:none}
+.count{font-size:13px;font-weight:900;background:var(--sun);border:3px solid var(--ink);border-radius:999px;
+  padding:7px 14px;box-shadow:0 4px 0 var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;background:#FFFFFFAA;
+  border:3px dashed #23364B55;border-radius:20px;padding:12px}
+.cell{background:#fff;border:3px solid var(--ink);border-radius:16px;padding:8px 6px 6px;
+  box-shadow:0 4px 0 var(--ink);text-align:center;position:relative}
+.cell:active{transform:translateY(4px);box-shadow:none}
+.cell.locked{background:#EDF2F7;border-style:dashed;border-color:#23364B44;box-shadow:none;opacity:.75}
+.cell svg{width:100%;display:block}
+.cell.locked svg{filter:grayscale(1) brightness(.4) opacity(.25)}
+.cell .nm{font-size:11.5px;font-weight:900;margin-top:3px;line-height:1.3}
+.cell.locked .nm{color:#23364B66}
+.cell .x{position:absolute;top:-8px;right:-6px;background:var(--sun);border:2.5px solid var(--ink);
+  border-radius:999px;font-family:"Baloo 2",sans-serif;font-weight:800;font-size:12px;padding:1px 7px}
+.cell.sr{border-color:var(--gold);box-shadow:0 4px 0 var(--gold)}
+.cell.r{border-color:var(--main);box-shadow:0 4px 0 var(--main)}
+.cell.justgot{animation:got 1.6s ease-in-out 2}
+@keyframes got{0%,100%{transform:none}
+  25%{transform:scale(1.06) rotate(-2deg)}75%{transform:scale(1.06) rotate(2deg)}}
+
+/* ===== きろく ===== */
+.rec{background:#fff;border:3px solid var(--ink);border-radius:18px;box-shadow:0 5px 0 var(--ink);
+  padding:14px;margin-bottom:12px}
+.rec h3{font-size:14px;font-weight:900;margin-bottom:8px}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.day{aspect-ratio:1;border-radius:8px;background:#EDF2F7;border:2px solid #23364B22;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;font-size:9px;font-weight:700}
+.day b{font-family:"Baloo 2",sans-serif;font-size:13px}
+.day.has{background:var(--grass);border-color:var(--ink);color:#fff}
+.recnote{font-size:12px;line-height:1.8;opacity:.8;font-weight:500}
+.links{display:grid;gap:8px;margin-top:10px}
+.link{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit;background:#fff;
+  border:2.5px solid var(--ink);border-radius:14px;padding:10px 12px;box-shadow:0 4px 0 var(--ink)}
+.link:active{transform:translateY(4px);box-shadow:none}
+.link .em{font-size:20px;width:24px;text-align:center;flex:none}
+.link b{display:block;font-size:14px;font-weight:900;line-height:1.3}
+.link i{display:block;font-style:normal;font-size:10.5px;font-weight:700;opacity:.6}
+.link.cal{background:#FFF6E2}
+
+/* ===== fx ===== */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.conf{position:fixed;top:-24px;width:11px;height:16px;border-radius:2px;animation:fall linear forwards;will-change:transform}
+@keyframes fall{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(105vh) rotate(720deg);opacity:.9}}
+:focus-visible{outline:4px solid var(--main);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div id="fx"></div>
+<div class="wrap">
+
+<!-- ===== HOME ===== -->
+<section class="screen on" id="home">
+  <div class="hero">
+    <div class="titlecard">
+      <div class="eyebrow">TOILET GACHA</div>
+      <h1>トイレ いったら<br><em>ガチャ</em></h1>
+      <div class="tag">たのしく トイトレ！</div>
+    </div>
+  </div>
+
+  <div class="talkrow">
+    <div class="mascot" id="homeChar"></div>
+    <div class="bubble" id="homeBubble">トイレに いったら<br>ボタンを おしてね！</div>
+  </div>
+
+  <div class="bigbtns">
+    <button class="did" id="tryBtn"><span class="em">🚽</span>
+      <span><b>トイレ いってみた！</b><i>でても でなくても ガチャが まわせる</i></span></button>
+  </div>
+
+
+  <div class="subrow">
+    <button class="sub" id="zukanBtn">🚗 くるまずかん<span class="n" id="ownCnt">0 / 24</span></button>
+    <button class="sub" id="recBtn">📅 きろく<span class="n" id="todayCnt">きょう 0かい</span></button>
+  </div>
+
+  <div class="streak">
+    <span>🔥 れんぞく きろく</span><span><b id="streakN">0</b> にち</span>
+  </div>
+
+  <p class="parent">
+    3歳ごろからのトイレトレーニング用。<b>出なくても、トイレに行けたらガチャが回せます。</b><br>
+    3つのガチャは当たりやすさが同じです。<br>
+    記録は端末の中だけに保存されます ／ <a href="./for-parents/">おうちの方へ</a>
+  </p>
+</section>
+
+<!-- ===== CHOOSE ===== -->
+<section class="screen" id="choose">
+  <div class="topbar">
+    <button class="chipbtn" id="cBack">← もどる</button>
+  </div>
+  <h2 class="chooseTitle">どの ガチャに する？</h2>
+  <div class="chooseGrid" id="chooseGrid"></div>
+  <div class="talkrow">
+    <div class="mascot" id="cChar"></div>
+    <div class="bubble">どれを えらんでも<br>おなじ くるまが でるよ！</div>
+  </div>
+</section>
+
+<!-- ===== GACHA ===== -->
+<section class="screen" id="gacha">
+  <div class="gachawrap">
+    <div class="gachamsg" id="gmsg">ハンドルを まわしてね！</div>
+    <svg class="machine" id="machine" viewBox="0 0 240 300"></svg>
+    <div id="capsuleArea"></div>
+    <div id="resultArea"></div>
+  </div>
+</section>
+
+<!-- ===== ずかん ===== -->
+<section class="screen" id="zukan">
+  <div class="topbar">
+    <button class="chipbtn" id="zBack">← もどる</button>
+    <div class="count">🚗 <span id="zCount">0 / 24</span></div>
+  </div>
+  <div class="grid" id="carGrid"></div>
+  <div class="talkrow" style="margin-top:14px">
+    <div class="mascot" id="zChar"></div>
+    <div class="bubble" id="zBubble">くるまを おすと なまえが でるよ</div>
+  </div>
+</section>
+
+<!-- ===== きろく ===== -->
+<section class="screen" id="record">
+  <div class="topbar">
+    <button class="chipbtn" id="rBack">← もどる</button>
+    <div class="count">🔥 <span id="rStreak">0</span> にち</div>
+  </div>
+  <div class="rec">
+    <h3>この1しゅうかん</h3>
+    <div class="days" id="days"></div>
+  </div>
+  <div class="rec">
+    <h3>これまでの ないやく</h3>
+    <div id="breakdown" class="recnote"></div>
+  </div>
+  <div class="rec">
+    <h3>よくできた 時間帯</h3>
+    <div id="hours" class="recnote"></div>
+  </div>
+  <div class="rec">
+    <h3>おうちの方へ</h3>
+    <p class="recnote">
+      成功したときだけ記録します。失敗を数える機能はあえて入れていません。<br><br>
+      うまくいく時間帯が見えてくると、そのタイミングで声をかけやすくなります。起床後・食後・お昼寝の前後が定番です。<br><br>
+      できなかった日が続いても、体の準備がまだというだけのことが多いです。記録が途切れても気にしないでください。
+    </p>
+  </div>
+  <div class="rec">
+    <h3>おうちの方の うんち記録は「ウンログ」で</h3>
+    <p class="recnote">うんちを10秒で記録して、腸内環境を見える化できるアプリです。家族みんなの健康管理に。</p>
+    <div class="links">
+      <a class="link ios" href="https://apps.apple.com/jp/app/id539493829" target="_blank" rel="noopener">
+        <span class="em"></span><span><b>iPhone / iPad</b><i>App Store</i></span></a>
+      <a class="link and" href="https://play.google.com/store/apps/details?id=com.mynew.unlog" target="_blank" rel="noopener">
+        <span class="em">▶</span><span><b>Android</b><i>Google Play</i></span></a>
+      <a class="link cal" href="https://unlog.me/calendar" target="_blank" rel="noopener">
+        <span class="em">📅</span><span><b>うんちカレンダー</b><i>ブラウザですぐ使える unlog.me</i></span></a>
+    </div>
+  </div>
+
+  <button class="cta ghost" id="resetBtn">きろくを ぜんぶ けす</button>
+</section>
+
+</div>
+
+<script>
+/* ================= おしりん ================= */
+const MASCOT=`<svg viewBox="0 0 120 132" xmlns="http://www.w3.org/2000/svg">
+  <g class="arm arm-l"><path class="limb" d="M30 66 L13 55"/><circle class="hand" cx="9" cy="52" r="7"/></g>
+  <g class="arm arm-r"><path class="limb" d="M90 66 L107 55"/><circle class="hand" cx="111" cy="52" r="7"/></g>
+  <path class="limb" d="M48 98 L45 112"/><ellipse class="hand" cx="42" cy="115" rx="10" ry="6"/>
+  <path class="limb" d="M72 98 L75 112"/><ellipse class="hand" cx="78" cy="115" rx="10" ry="6"/>
+  <path class="body" d="M60 44 C55 24, 36 18, 24 31 C12 44, 15 74, 30 90 C43 103, 56 103, 60 94
+    C64 103, 77 103, 90 90 C105 74, 108 44, 96 31 C84 18, 65 24, 60 44 Z"/>
+  <path class="crease" d="M60 44 C57 50, 57 55, 60 61"/>
+  <ellipse class="blush" cx="29" cy="72" rx="8" ry="5"/><ellipse class="blush" cx="91" cy="72" rx="8" ry="5"/>
+  <circle class="eye" cx="41" cy="58" r="5.5"/><circle class="eye" cx="79" cy="58" r="5.5"/>
+  <path class="happy-eye" d="M34 60 Q41 51 48 60" fill="none" stroke="#23364B" stroke-width="4.5" stroke-linecap="round"/>
+  <path class="happy-eye" d="M72 60 Q79 51 86 60" fill="none" stroke="#23364B" stroke-width="4.5" stroke-linecap="round"/>
+  <path class="mouth-normal" d="M47 80 Q60 92 73 80" fill="none" stroke="#23364B" stroke-width="4.5" stroke-linecap="round"/>
+  <g class="mouth-big"><ellipse cx="60" cy="82" rx="14" ry="10.5" fill="#23364B"/>
+    <ellipse cx="60" cy="87" rx="7" ry="4.5" fill="#FF6FA5"/></g>
+</svg>`;
+["homeChar","zChar","cChar"].forEach(id=>{const e=document.getElementById(id);if(e)e.innerHTML=MASCOT});
+
+/* ================= くるま（すべてオリジナルのSVG） ================= */
+const INK="#23364B";
+/* body: 車体色 / cab: 窓まわり / shape: 形 / top: 上に載るもの */
+const CARS=[
+ {id:"red",   nm:"あかい くるま",     body:"#E24B3C", shape:"sedan", rare:0},
+ {id:"blue",  nm:"あおい くるま",     body:"#3C7FE2", shape:"sedan", rare:0},
+ {id:"green", nm:"みどりの くるま",   body:"#3DBE7A", shape:"sedan", rare:0},
+ {id:"taxi",  nm:"タクシー",          body:"#FFC24B", shape:"sedan", top:"sign", rare:0},
+ {id:"bus",   nm:"バス",              body:"#5BC0DE", shape:"box",   rare:0},
+ {id:"school",nm:"スクールバス",      body:"#FFB13C", shape:"box",   rare:0},
+ {id:"van",   nm:"ワゴンしゃ",        body:"#8E7CC3", shape:"box",   rare:0},
+ {id:"post",  nm:"ゆうびんしゃ",      body:"#E2544B", shape:"box",   top:"mark", rare:0},
+ {id:"ice",   nm:"アイスクリームカー",body:"#FF9FC4", shape:"box",   top:"cone", rare:0},
+ {id:"camp",  nm:"キャンピングカー",  body:"#F2E6C9", shape:"box",   rare:0},
+ {id:"truck", nm:"トラック",          body:"#4B7BE2", shape:"truck", rare:0},
+ {id:"tank",  nm:"タンクローリー",    body:"#B0BCC9", shape:"tank",  rare:0},
+ {id:"gomi",  nm:"ゴミしゅうしゅうしゃ",body:"#6FB86F",shape:"truck", rare:0},
+ {id:"keitra",nm:"けいトラック",      body:"#EFEFEF", shape:"truck", rare:0},
+ {id:"police",nm:"パトカー",          body:"#F2F4F7", shape:"sedan", top:"siren", two:INK, rare:1},
+ {id:"fire",  nm:"しょうぼうしゃ",    body:"#D93A2B", shape:"truck", top:"ladder", rare:1},
+ {id:"amb",   nm:"きゅうきゅうしゃ",  body:"#FFFFFF", shape:"box",   top:"siren", rare:1},
+ {id:"dump",  nm:"ダンプカー",        body:"#F0A32E", shape:"dump",  rare:1},
+ {id:"shovel",nm:"ショベルカー",      body:"#FFD23F", shape:"work",  top:"arm", rare:1},
+ {id:"mixer", nm:"ミキサーしゃ",      body:"#5FA8E0", shape:"mixer", rare:1},
+ {id:"crane", nm:"クレーンしゃ",      body:"#F5C542", shape:"work",  top:"crane", rare:1},
+ {id:"gold",  nm:"きんいろスポーツカー",body:"#F5C542",shape:"sport", rare:2},
+ {id:"rocket",nm:"ロケットカー",      body:"#7C6BE8", shape:"sport", top:"fin", rare:2},
+ {id:"rainbow",nm:"にじいろカー",     body:"RAINBOW", shape:"sport", rare:2},
+];
+const RARE_NAME=["ノーマル","レア","スーパーレア"];
+
+function wheels(xs){
+  return xs.map(x=>`<g><circle cx="${x}" cy="90" r="17" fill="#2B3A46" stroke="${INK}" stroke-width="4"/>
+    <circle cx="${x}" cy="90" r="7" fill="#D7DEE5" stroke="${INK}" stroke-width="3"/></g>`).join("");
+}
+let _gid=0;
+function drawCar(c){
+  const gid="rb"+(_gid++);
+  const b = c.body==="RAINBOW" ? `url(#${gid})` : c.body;
+  const s=c.shape;
+  let g="";
+  const glass='#BFE3F5';
+  if(s==="sedan"||s==="sport"){
+    const roof = s==="sport"
+      ? `<path d="M62 62 L86 40 L142 40 L162 62 Z" fill="${b}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`
+      : `<path d="M60 60 L82 34 L146 34 L168 60 Z" fill="${b}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`;
+    g += roof
+      + `<path d="M88 40 L140 40 L156 58 L74 58 Z" fill="${glass}" stroke="${INK}" stroke-width="3"/>`
+      + `<rect x="24" y="58" width="176" height="30" rx="13" fill="${b}" stroke="${INK}" stroke-width="4"/>`;
+    if(c.two) g += `<rect x="24" y="58" width="60" height="30" rx="13" fill="${c.two}" stroke="${INK}" stroke-width="4"/>`;
+  } else if(s==="box"){
+    g += `<rect x="24" y="26" width="176" height="62" rx="14" fill="${b}" stroke="${INK}" stroke-width="4"/>`
+      +  `<rect x="38" y="38" width="52" height="26" rx="6" fill="${glass}" stroke="${INK}" stroke-width="3"/>`
+      +  `<rect x="102" y="38" width="52" height="26" rx="6" fill="${glass}" stroke="${INK}" stroke-width="3"/>`;
+  } else if(s==="truck"||s==="dump"||s==="tank"||s==="mixer"||s==="work"){
+    g += `<path d="M24 40 L74 40 L86 62 L86 88 L24 88 Z" fill="${b}" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`
+      +  `<rect x="34" y="46" width="34" height="20" rx="5" fill="${glass}" stroke="${INK}" stroke-width="3"/>`;
+    if(s==="truck") g += `<rect x="92" y="42" width="108" height="46" rx="8" fill="${b}" stroke="${INK}" stroke-width="4"/>`;
+    if(s==="dump")  g += `<path d="M92 82 L104 40 L200 40 L200 82 Z" fill="#7A5C2E" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`;
+    if(s==="tank")  g += `<rect x="92" y="46" width="108" height="42" rx="21" fill="#DDE4EA" stroke="${INK}" stroke-width="4"/>`;
+    if(s==="mixer") g += `<g><ellipse cx="146" cy="62" rx="54" ry="27" fill="#DDE4EA" stroke="${INK}" stroke-width="4"/>
+      <path d="M104 50 L188 50 M100 62 L192 62 M104 74 L188 74" stroke="${INK}" stroke-width="3"/></g>`;
+    if(s==="work")  g += `<rect x="92" y="58" width="76" height="30" rx="8" fill="${b}" stroke="${INK}" stroke-width="4"/>`;
+  }
+  /* 上に載るもの */
+  if(c.top==="siren") g += `<rect x="96" y="18" width="34" height="14" rx="6" fill="#E24B3C" stroke="${INK}" stroke-width="3.5"/>`;
+  if(c.top==="sign")  g += `<rect x="96" y="18" width="38" height="15" rx="5" fill="#fff" stroke="${INK}" stroke-width="3.5"/>`;
+  if(c.top==="mark")  g += `<circle cx="150" cy="56" r="15" fill="#fff" stroke="${INK}" stroke-width="3.5"/>
+                            <path d="M142 52 h16 M142 58 h16" stroke="${INK}" stroke-width="3"/>`;
+  if(c.top==="cone")  g += `<path d="M150 6 L162 34 L138 34 Z" fill="#F5C542" stroke="${INK}" stroke-width="3.5" stroke-linejoin="round"/>
+                            <circle cx="150" cy="8" r="9" fill="#FFF0F5" stroke="${INK}" stroke-width="3.5"/>`;
+  if(c.top==="ladder")g += `<g stroke="${INK}" stroke-width="4"><path d="M96 36 L196 20" />
+                            <path d="M98 44 L198 28"/><path d="M110 34 L112 42 M130 31 L132 39 M150 28 L152 36 M170 25 L172 33"/></g>`;
+  if(c.top==="arm")   g += `<g fill="${b}" stroke="${INK}" stroke-width="4" stroke-linejoin="round">
+                            <path d="M150 60 L186 24 L200 36 L166 70 Z"/>
+                            <path d="M196 40 L214 58 L196 74 L186 60 Z"/></g>`;
+  if(c.top==="crane") g += `<g stroke="${INK}" stroke-width="4" fill="none"><path d="M120 58 L206 14"/>
+                            <path d="M206 14 L206 44"/><rect x="196" y="44" width="20" height="14" rx="3" fill="${b}"/></g>`;
+  if(c.top==="fin")   g += `<path d="M150 58 L150 20 L184 58 Z" fill="#FF6FA5" stroke="${INK}" stroke-width="4" stroke-linejoin="round"/>`;
+  g += wheels(s==="sedan"||s==="sport"?[62,162]:[58,160]);
+  g += `<circle cx="206" cy="70" r="7" fill="#FFF0A8" stroke="${INK}" stroke-width="3"/>`;
+  return `<svg viewBox="0 0 232 116" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="${gid}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FF6B6B"/><stop offset=".33" stop-color="#FFD23F"/>
+      <stop offset=".66" stop-color="#3DBE7A"/><stop offset="1" stop-color="#5B8DEF"/></linearGradient></defs>
+    ${g}</svg>`;
+}
+
+/* ================= state ================= */
+const $=id=>document.getElementById(id);
+const store=(()=>{const KEY="toiletGacha.v1",mem={};
+  const has=(()=>{try{localStorage.setItem("__t","1");localStorage.removeItem("__t");return true}catch(e){return false}})();
+  return{load(){try{return JSON.parse(has?localStorage.getItem(KEY):mem[KEY])||null}catch(e){return null}},
+    save(o){const s=JSON.stringify(o);try{has?localStorage.setItem(KEY,s):mem[KEY]=s}catch(e){}}}})();
+let save=store.load()||{cars:{},log:[]};
+const today=()=>new Date().toLocaleDateString("sv-SE");   // YYYY-MM-DD
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+let ac;
+function beep(f,dur=.22,type="triangle"){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();
+  f.forEach((v,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=v;
+    const t=ac.currentTime+i*.09;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.2,t+.02);
+    g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+dur+.03)})}catch(e){}}
+const CONF=["#2E9BD6","#FFD23F","#3DBE7A","#FF6FA5","#FF9F5A","#8E7CC3"];
+function confetti(n){if(reduced)return;const N=Math.round(n*(innerWidth<430?.6:1));
+  for(let i=0;i<N;i++){const c=document.createElement("div");c.className="conf";c.style.left=(Math.random()*100)+"vw";
+    c.style.background=CONF[i%CONF.length];c.style.animationDuration=(1.1+Math.random()*.9)+"s";
+    c.style.animationDelay=(Math.random()*.4)+"s";if(i%3===0)c.style.borderRadius="50%";$("fx").appendChild(c)}
+  setTimeout(()=>$("fx").querySelectorAll(".conf").forEach(e=>e.remove()),2600)}
+function react(cid,bid,text,mood){const b=$(bid),c=$(cid);
+  if(text){b.innerHTML=text;b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop")}
+  if(c){c.classList.remove("cheer");void c.offsetWidth;if(mood)c.classList.add(mood)}}
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id));scrollTo(0,0)}
+
+/* ================= 記録 ================= */
+function owned(){return Object.keys(save.cars).length}
+function todayCount(){const t=today();return save.log.filter(l=>l.d===t).length}
+function streak(){
+  const days=[...new Set(save.log.map(l=>l.d))].sort().reverse();
+  if(!days.length)return 0;
+  let n=0;const d=new Date();
+  for(;;){
+    const key=d.toLocaleDateString("sv-SE");
+    if(days.includes(key)){n++;d.setDate(d.getDate()-1)}
+    else if(n===0&&key===today()){d.setDate(d.getDate()-1)}  // 今日まだでも連続は途切れない
+    else break;
+  }
+  return n;
+}
+function refreshHome(){
+  $("ownCnt").textContent=owned()+" / "+CARS.length;
+  $("todayCnt").textContent="きょう "+todayCount()+"かい";
+  $("streakN").textContent=streak();
+}
+refreshHome();
+
+/* ================= ガチャ ================= */
+let _mid=0;
+function machineSVG(col,knobId){
+  const gg="gl"+(_mid++);
+  const dark=col+"CC";
+  return `<defs><linearGradient id="${gg}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EAF6FF"/><stop offset="1" stop-color="#C9E6FA"/></linearGradient></defs>
+    <rect x="34" y="150" width="172" height="118" rx="16" fill="${col}" stroke="${INK}" stroke-width="6"/>
+    <circle cx="120" cy="92" r="82" fill="url(#${gg})" stroke="${INK}" stroke-width="6"/>
+    ${[[92,66,"#FFD23F"],[142,72,"#5BC0DE"],[112,110,"#FF6FA5"],[158,110,"#3DBE7A"],[74,110,"#8E7CC3"],[120,140,"#FF9F5A"]]
+      .map(([x,y,c])=>`<circle cx="${x}" cy="${y}" r="19" fill="${c}" stroke="${INK}" stroke-width="4"/>`).join("")}
+    <rect x="52" y="146" width="136" height="16" rx="6" fill="${dark}" stroke="${INK}" stroke-width="5"/>
+    <g class="knob"${knobId?` id="${knobId}"`:""}>
+      <circle cx="120" cy="196" r="30" fill="#FFD23F" stroke="${INK}" stroke-width="6"/>
+      <rect x="112" y="170" width="16" height="52" rx="7" fill="#fff" stroke="${INK}" stroke-width="5"/>
+    </g>
+    <rect x="76" y="234" width="88" height="26" rx="8" fill="#2B3A46" stroke="${INK}" stroke-width="5"/>
+    <text x="120" y="286" text-anchor="middle" font-family="Baloo 2" font-weight="800" font-size="20" fill="${INK}">GACHA</text>`;
+}
+function pickCar(){
+  const r=Math.random();
+  const tier = r<.05 ? 2 : r<.30 ? 1 : 0;
+  const pool=CARS.filter(c=>c.rare===tier);
+  return pool[Math.random()*pool.length|0];
+}
+const KINDS=[
+  {t:"none",nm:"でなかった",em:"🚽",col:"#5BC0DE"},
+  {t:"pee", nm:"おしっこ",  em:"💧",col:"#F2B23C"},
+  {t:"poop",nm:"うんち",    em:"💩",col:"#A9743E"},
+];
+function openChoose(){
+  $("chooseGrid").innerHTML=KINDS.map(k=>
+    `<button class="pick" data-t="${k.t}">
+       <svg viewBox="0 0 240 300">${machineSVG(k.col,null)}</svg>
+       <span class="em">${k.em}</span><span class="lb">${k.nm}</span>
+     </button>`).join("");
+  $("chooseGrid").querySelectorAll(".pick").forEach(b=>
+    b.onclick=()=>openGacha(b.dataset.t));
+  beep([440,554],.14);
+  show("choose");
+}
+let gachaState="ready";
+function openGacha(type){
+  const kind=KINDS.find(k=>k.t===type)||KINDS[0];
+  save.log.push({d:today(),h:new Date().getHours(),t:type});
+  store.save(save);
+  gachaState="ready";
+  $("machine").innerHTML=machineSVG(kind.col,"knob");
+  $("capsuleArea").innerHTML="";$("resultArea").innerHTML="";
+  $("gmsg").textContent="ハンドルを まわしてね！";
+  show("gacha");
+  beep([523,659],.18);
+  $("knob").onclick=turn;
+}
+function turn(){
+  if(gachaState!=="ready")return;
+  gachaState="spinning";
+  $("knob").classList.add("spin");
+  $("machine").classList.add("shake");
+  beep([392,440,494,523],.14);
+  $("gmsg").textContent="ゴロゴロ…";
+  setTimeout(()=>{
+    $("machine").classList.remove("shake");
+    const car=pickCar();
+    const col=["#FFD23F","#5BC0DE","#FF6FA5"][car.rare];
+    $("capsuleArea").innerHTML=`<svg class="capsule drop wiggle" id="cap" viewBox="0 0 120 120">
+      <path d="M14 60 a46 46 0 0 1 92 0 z" fill="${col}" stroke="${INK}" stroke-width="6"/>
+      <path d="M14 60 a46 46 0 0 0 92 0 z" fill="#F2F6FA" stroke="${INK}" stroke-width="6"/>
+      <rect x="12" y="54" width="96" height="12" rx="6" fill="#fff" stroke="${INK}" stroke-width="5"/></svg>`;
+    $("gmsg").textContent="カプセルを あけてみよう！";
+    beep([660,880],.16,"sine");
+    gachaState="capsule";
+    $("cap").onclick=()=>reveal(car);
+  },1200);
+}
+function reveal(car){
+  if(gachaState!=="capsule")return;
+  gachaState="done";
+  const before=save.cars[car.id]||0;
+  save.cars[car.id]=before+1;
+  store.save(save);
+  $("capsuleArea").innerHTML="";
+  $("gmsg").textContent = car.rare===2?"✨ スーパーレア！ ✨":car.rare===1?"⭐ レア！":"やったー！";
+  const cls=car.rare===2?"sr":car.rare===1?"rare":"";
+  $("resultArea").innerHTML=`
+    <div class="carcard ${cls}">
+      ${drawCar(car)}
+      <div class="carname">${car.nm}</div>
+      <span class="rarity ${car.rare===2?"s":car.rare===1?"r":""}">${RARE_NAME[car.rare]}</span>
+      ${before?`<div class="dup">${before+1}だいめ！ なかまが ふえたよ</div>`:`<div class="dup">はじめて ゲット！</div>`}
+    </div>
+    <button class="cta" id="toZukan">🚗 ずかんに いれる</button>`;
+  confetti([26,40,60][car.rare]);
+  beep([[523,659,784],[587,740,880,1047],[659,830,988,1175,1319]][car.rare],.26);
+  $("toZukan").onclick=()=>{refreshHome();openZukan(car.id)};
+}
+
+/* ================= ずかん ================= */
+function openZukan(newId){
+  $("zCount").textContent=owned()+" / "+CARS.length;
+  $("carGrid").innerHTML=CARS.map(c=>{
+    const n=save.cars[c.id]||0;
+    const cls=n?(c.rare===2?"sr":c.rare===1?"r":""):"locked";
+    return `<div class="cell ${cls}" data-id="${c.id}">
+      ${n>1?`<span class="x">×${n}</span>`:""}
+      ${drawCar(c)}
+      <div class="nm">${n?c.nm:"？？？"}</div></div>`;
+  }).join("");
+  if(newId){
+    const el=$("carGrid").querySelector(`.cell[data-id="${newId}"]`);
+    if(el){
+      el.classList.add("justgot");
+      el.scrollIntoView({block:"center",behavior:"smooth"});
+      const c=CARS.find(x=>x.id===newId);
+      react("zChar","zBubble",`${c.nm} が なかまに なったよ！`,"cheer");
+    }
+  }
+  $("carGrid").querySelectorAll(".cell").forEach(el=>el.onclick=()=>{
+    const c=CARS.find(x=>x.id===el.dataset.id), n=save.cars[c.id]||0;
+    react("zChar","zBubble", n
+      ? `<span>${c.nm}<br><small style="font-size:12px;opacity:.7">${RARE_NAME[c.rare]}／${n}だい もってる</small></span>`
+      : "まだ もってないよ！<br>トイレできたら ゲットしよう", n?"cheer":null);
+    beep(n?[660,880]:[300],.12,"sine");
+  });
+  show("zukan");
+}
+
+/* ================= きろく ================= */
+function openRecord(){
+  $("rStreak").textContent=streak();
+  const d=new Date(),cells=[];
+  for(let i=6;i>=0;i--){
+    const x=new Date(d);x.setDate(d.getDate()-i);
+    const key=x.toLocaleDateString("sv-SE");
+    const n=save.log.filter(l=>l.d===key).length;
+    cells.push(`<div class="day ${n?"has":""}">${"日月火水木金土"[x.getDay()]}<b>${n||"·"}</b></div>`);
+  }
+  $("days").innerHTML=cells.join("");
+  const n=t=>save.log.filter(l=>l.t===t).length;
+  $("breakdown").innerHTML = save.log.length
+    ? `トイレに いった　<b>${save.log.length}</b> かい<br>　うち おしっこ　<b>${n("pee")}</b> かい<br>　うち うんち　<b>${n("poop")}</b> かい<br>　でなかった　<b>${n("none")}</b> かい`
+    : "まだ記録がありません。";
+  const hours={};
+  save.log.forEach(l=>{const b=Math.floor(l.h/3)*3;hours[b]=(hours[b]||0)+1});
+  const top=Object.entries(hours).sort((a,b)=>b[1]-a[1]).slice(0,3);
+  $("hours").innerHTML = save.log.length<3
+    ? "記録が増えると、成功しやすい時間帯が出てきます。"
+    : top.map(([h,n])=>`<b>${h}時〜${Number(h)+3}時</b>　${n}回`).join("<br>");
+  show("record");
+}
+
+/* ================= events ================= */
+["gesturestart","gesturechange","gestureend"].forEach(ev=>
+  document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
+document.addEventListener("touchmove",e=>{if(e.touches.length>1)e.preventDefault()},{passive:false});
+
+$("tryBtn").onclick=openChoose;
+$("cBack").onclick=()=>{refreshHome();show("home")};
+$("zukanBtn").onclick=openZukan;
+$("recBtn").onclick=openRecord;
+$("zBack").onclick=()=>{refreshHome();show("home")};
+$("rBack").onclick=()=>{refreshHome();show("home")};
+
+$("resetBtn").onclick=()=>{
+  if(confirm("集めたくるまと記録を全部消します。よろしいですか？")){
+    save={cars:{},log:[]};store.save(save);refreshHome();show("home");
+  }
+};
+
+if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body>
+</html>
